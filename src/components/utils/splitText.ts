@@ -12,9 +12,28 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
-  if (window.innerWidth < 900) return;
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
+
+  if (window.innerWidth < 900) {
+    paras.forEach((para: ParaElement) => {
+      if (para.split) {
+        para.anim?.progress(1).kill();
+        para.split.revert();
+        para.anim = undefined;
+        para.split = undefined;
+      }
+    });
+    titles.forEach((title: ParaElement) => {
+      if (title.split) {
+        title.anim?.progress(1).kill();
+        title.split.revert();
+        title.anim = undefined;
+        title.split = undefined;
+      }
+    });
+    return;
+  }
 
   const TriggerStart = window.innerWidth <= 1024 ? "top 60%" : "20% 60%";
   const ToggleAction = "play pause resume reverse";

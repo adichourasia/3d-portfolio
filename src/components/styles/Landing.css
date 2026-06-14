@@ -21,8 +21,8 @@
   position: fixed;
   width: 300px;
   height: 300px;
-  background-color: #22d3ee;
-  box-shadow: inset -50px 40px 50px rgba(0, 180, 180, 0.6);
+  background-color: #ffc703;
+  box-shadow: inset -50px 40px 50px rgba(255, 199, 3, 0.5), 0 0 80px rgba(255, 199, 3, 0.3);
   filter: blur(60px);
   border-radius: 50%;
   animation: loadingCircle 5s linear infinite;
@@ -61,8 +61,8 @@
   display: none;
   width: 300px;
   height: 300px;
-  background-color: #22d3ee;
-  box-shadow: inset -50px 40px 50px rgba(0, 180, 180, 0.6);
+  background-color: #ffc703;
+  box-shadow: inset -50px 40px 50px rgba(255, 199, 3, 0.5), 0 0 80px rgba(255, 199, 3, 0.3);
   filter: blur(50px);
   border-radius: 50%;
   animation: loadingCircle2 5s linear infinite;
@@ -94,9 +94,9 @@
   width: 400px;
   height: 400px;
   z-index: 1;
-  background-color: #22d3ee;
+  background-color: #ffc703;
   transform: translate(-50%, 36%) scaleX(1.4);
-  box-shadow: inset 66px 35px 85px 0px rgba(0, 180, 180, 0.65);
+  box-shadow: inset 66px 35px 85px 0px rgba(255, 199, 3, 0.55), 0 0 100px rgba(255, 199, 3, 0.35);
   filter: blur(50px);
   border-radius: 50%;
   top: 50%;
@@ -116,7 +116,7 @@
   left: 50%;
   z-index: 0;
   bottom: 50px;
-  pointer-events: inherit;
+  pointer-events: none !important;
 }
 
 .character-model::after {
@@ -166,13 +166,15 @@
   z-index: 3;
   transform: translate(-50%, -50%);
   border-radius: 50%;
+  pointer-events: auto !important;
 }
 
 .landing-intro {
   position: absolute;
-  z-index: 9;
+  z-index: 20; /* Ensure landing content sits above the 3D model canvas (z-index: 11) */
   top: 12%;
   left: 0;
+  pointer-events: auto !important;
 }
 
 .landing-intro h2 {
@@ -202,7 +204,8 @@
   transform: translateX(50%);
   bottom: 40px;
   top: inherit;
-  z-index: 9;
+  z-index: 20; /* Ensure landing content sits above the 3D model canvas (z-index: 11) */
+  pointer-events: auto !important;
 }
 
 .landing-info h3 {
@@ -395,3 +398,152 @@ h2.landing-info-h2 {
     font-size: 75px;
   }
 }
+
+.cgpa-badge {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffc703;
+  background: rgba(255, 199, 3, 0.08);
+  border: 1px solid rgba(255, 199, 3, 0.2);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 199, 3, 0.1);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cgpa-badge:hover {
+  background: rgba(255, 199, 3, 0.15);
+  border-color: rgba(255, 199, 3, 0.45);
+  box-shadow: 0 0 25px rgba(255, 199, 3, 0.25);
+  transform: translateY(-2px);
+}
+
+.landing-role-text {
+  font-size: 38px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 15px 0 0 0 !important;
+  margin-left: 0px !important;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  transform: translateY(15px);
+  filter: blur(5px);
+}
+
+.landing-role-text.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.landing-role-text.fade-out {
+  opacity: 0;
+  transform: translateY(-15px);
+  filter: blur(5px);
+}
+
+@media screen and (max-width: 768px) {
+  .landing-role-text {
+    font-size: 26px;
+    margin-top: 5px;
+  }
+  .cgpa-badge {
+    font-size: 13px;
+    padding: 8px 16px;
+    margin-top: 15px;
+  }
+}
+
+.download-resume-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 199, 3, 0.06);
+  border: 1px solid rgba(255, 199, 3, 0.25);
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 199, 3, 0.05);
+}
+
+.download-resume-btn:hover {
+  background: rgba(255, 199, 3, 0.15);
+  border-color: #ffc703;
+  box-shadow: 0 8px 25px rgba(255, 199, 3, 0.25), 0 0 15px rgba(255, 199, 3, 0.15);
+  transform: translateY(-3px);
+  color: #ffc703;
+}
+
+@media screen and (max-width: 768px) {
+  .download-resume-btn {
+    font-size: 13px;
+    padding: 8px 18px;
+    margin-top: 15px;
+  }
+
+  .landing-intro {
+    top: 10% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .landing-intro h1 {
+    font-size: 32px !important;
+    line-height: 34px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .landing-intro h2 {
+    font-size: 16px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .character-model {
+    height: 40vh !important;
+    top: 32vh !important;
+    bottom: auto !important;
+  }
+
+  .landing-info {
+    bottom: 6% !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+    transform: none !important;
+  }
+
+  .landing-info h3 {
+    font-size: 16px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .landing-role-text {
+    font-size: 26px !important;
+    margin-top: 8px !important;
+  }
+
+  .cgpa-badge {
+    font-size: 12px !important;
+    padding: 6px 14px !important;
+    margin-top: 12px !important;
+  }
+}

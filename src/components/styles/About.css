@@ -69,3 +69,83 @@
     line-height: 2.7rem;
   }
 }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 199, 3, 0.05);
+  border-color: rgba(255, 199, 3, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 199, 3, 0.1);
+}
+
+.stat-card h4 {
+  font-size: 36px;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  color: var(--accentColor);
+  font-family: "Geist", sans-serif;
+}
+
+.stat-card p {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin: 0 !important;
+  line-height: normal !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1024px) {
+  .about-me p {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .about-me p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .about-stats {
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .stat-card {
+    padding: 15px;
+  }
+  .stat-card h4 {
+    font-size: 28px;
+  }
+  .stat-card p {
+    font-size: 11px !important;
+  }
+}
+
+.highlight-web,
+.highlight-cse,
+.highlight-fullstack {
+  color: var(--accentColor);
+  font-weight: 700;
+}
+
+

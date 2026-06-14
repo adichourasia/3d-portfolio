@@ -29,7 +29,7 @@ export function setCharTimeline(
   });
   const tl3 = gsap.timeline({
     scrollTrigger: {
-      trigger: ".whatIDO",
+      trigger: ".education-section",
       start: "top top",
       end: "bottom top",
       scrub: true,
@@ -90,7 +90,7 @@ export function setCharTimeline(
         .to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
         .to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0)
         .fromTo(
-          ".what-box-in",
+          ".edu-box-in",
           { display: "none" },
           { display: "flex", duration: 0.1, delay: 6 },
           0
@@ -115,77 +115,36 @@ export function setCharTimeline(
           { y: "-100%", duration: 4, ease: "none", delay: 1 },
           0
         )
-        .fromTo(".whatIDO", { y: 0 }, { y: "15%", duration: 2 }, 0)
+        .fromTo(".education-section", { y: 0 }, { y: "15%", duration: 2 }, 0)
         .to(character.rotation, { x: -0.04, duration: 2, delay: 1 }, 0);
     }
   } else {
     if (character) {
       const tM2 = gsap.timeline({
         scrollTrigger: {
-          trigger: ".what-box-in",
+          trigger: ".edu-box-in",
           start: "top 70%",
           end: "bottom top",
         },
       });
-      tM2.to(".what-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
+      tM2.to(".edu-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
     }
   }
 }
 
 export function setAllTimeline() {
-  const careerTimeline = gsap.timeline({
+  const skillsTimeline = gsap.timeline({
     scrollTrigger: {
-      trigger: ".career-section",
-      start: "top 30%",
-      end: "100% center",
-      scrub: true,
-      invalidateOnRefresh: true,
+      trigger: ".skills-section",
+      start: "top 60%",
+      end: "bottom center",
+      toggleActions: "play none none reverse",
     },
   });
-  careerTimeline
-    .fromTo(
-      ".career-timeline",
-      { maxHeight: "10%" },
-      { maxHeight: "100%", duration: 0.5 },
-      0
-    )
 
-    .fromTo(
-      ".career-timeline",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.1 },
-      0
-    )
-    .fromTo(
-      ".career-info-box",
-      { opacity: 0 },
-      { opacity: 1, stagger: 0.1, duration: 0.5 },
-      0
-    )
-    .fromTo(
-      ".career-dot",
-      { animationIterationCount: "infinite" },
-      {
-        animationIterationCount: "1",
-        delay: 0.3,
-        duration: 0.1,
-      },
-      0
-    );
-
-  if (window.innerWidth > 1024) {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: "20%", duration: 0.5, delay: 0.2 },
-      0
-    );
-  } else {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: 0, duration: 0.5, delay: 0.2 },
-      0
-    );
-  }
+  skillsTimeline.fromTo(
+    ".skill-card",
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, stagger: 0.12, duration: 0.8, ease: "power3.out" }
+  );
 }

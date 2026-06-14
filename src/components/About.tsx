@@ -6,15 +6,32 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          I am currently co-founder of CallHQ.ai, building real-time voice AI for
-          businesses. I am a technologist at heart with strong business judgment—
-          I enjoy going from product strategy to hands-on engineering. My background
-          spans leadership at Adobe, founding Broki and CallHQ, and shipping
-          full-stack products end to end.
+          Enthusiastic <span className="highlight-web">Web developer</span> and <span className="highlight-cse">CSE student</span> with a passion for creating
+          responsive and interactive websites. Interested in <span className="highlight-fullstack">Full-Stack development</span> and continuously improving technical skills through
+          projects and hands-on learning.
         </p>
+        <div className="about-stats">
+          <div className="stat-card" data-cursor="disable">
+            <h4>6+</h4>
+            <p>Projects Built</p>
+          </div>
+          <div className="stat-card" data-cursor="disable">
+            <h4>7+</h4>
+            <p>Hackathons</p>
+          </div>
+          <div className="stat-card" data-cursor="disable">
+            <h4>10+</h4>
+            <p>Skills Learned</p>
+          </div>
+          <div className="stat-card" data-cursor="disable">
+            <h4>8+</h4>
+            <p>Certifications</p>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default About;
+

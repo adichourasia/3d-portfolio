@@ -1,80 +1,77 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { MdCopyright } from "react-icons/md";
 import "./styles/Contact.css";
 
 const Contact = () => {
+  const contactLinks = [
+    {
+      icon: <FaEnvelope />,
+      label: "Email",
+      value: "adityachourasia716@gmail.com",
+      url: "mailto:adityachourasia716@gmail.com",
+    },
+    {
+      icon: <FaPhone />,
+      label: "Phone",
+      value: "+91 8962155878",
+      url: "tel:+918962155878",
+    },
+    {
+      icon: <FaLinkedin />,
+      label: "LinkedIn",
+      value: "aditya-chourasia-5a4893327",
+      url: "https://www.linkedin.com/in/aditya-chourasia-5a4893327",
+    },
+    {
+      icon: <FaGithub />,
+      label: "GitHub",
+      value: "adichourasia",
+      url: "https://github.com/adichourasia",
+    },
+    {
+      icon: <FaInstagram />,
+      label: "Instagram",
+      value: "_aditya_chourasia_",
+      url: "https://www.instagram.com/_aditya_chourasia_/",
+    },
+  ];
+
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
-        <h3>Contact</h3>
-        <div className="contact-flex">
-          <div className="contact-box">
-            <h4>Connect</h4>
-            <p>
-              <a
-                href="https://www.linkedin.com/in/akashrmalhotra/"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="disable"
-              >
-                LinkedIn — akashrmalhotra
-              </a>
-            </p>
-            <h4>Education</h4>
-            <p>
-              PGPWE (MBA), Indian Institute of Management, Lucknow — 2021–2023
-            </p>
-            <p>
-              B.Tech Computer Science, Manav Rachna Educational Institutions —
-              2009–2013
-            </p>
-          </div>
-          <div className="contact-box">
-            <h4>Social</h4>
+        <h2>
+          Let's <span>Connect</span>
+        </h2>
+        <p className="contact-subheading">
+          Open for internships, collaboration and freelance works.
+        </p>
+
+        <div className="connect-grid">
+          {contactLinks.map((item, index) => (
             <a
-              href="https://github.com/akashrmalhotra"
+              href={item.url}
               target="_blank"
               rel="noreferrer"
+              className="connect-card"
+              key={index}
               data-cursor="disable"
-              className="contact-social"
             >
-              GitHub <MdArrowOutward />
+              <div className="connect-icon-wrapper">{item.icon}</div>
+              <div className="connect-info">
+                <span className="connect-label">{item.label}</span>
+                <span className="connect-value">{item.value}</span>
+              </div>
             </a>
-            <a
-              href="https://www.linkedin.com/in/akashrmalhotra/"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              LinkedIn <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.youtube.com/@Leftbraincoder"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              YouTube <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.instagram.com/leftbraincoder/"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
-            </a>
-          </div>
-          <div className="contact-box">
-            <h2>
-              Designed and Developed <br /> by <span>Akash Malhotra</span>
-            </h2>
-            <h5>
-              <MdCopyright /> 2026
-            </h5>
-          </div>
+          ))}
+        </div>
+
+        <div className="contact-footer">
+          <h3>
+            Designed and Developed by <span>Aditya Chourasia</span>
+          </h3>
+          <h5>
+            <MdCopyright /> 2026
+          </h5>
         </div>
       </div>
     </div>

@@ -1,73 +1,105 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
+import Lenis from "lenis";
 import "./styles/Navbar.css";
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-export let smoother: ScrollSmoother;
+gsap.registerPlugin(ScrollTrigger);
+export let lenis: Lenis;
 
 const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
+    // Initialize Lenis smooth scroll
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
     });
 
-    smoother.scrollTop(0);
-    smoother.paused(true);
+    // Pause scroll initially until loading finishes
+    lenis.stop();
 
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
-        }
-      });
-    });
-    window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
-    });
+    // Sync Lenis with GSAP ScrollTrigger updates
+    lenis.on("scroll", ScrollTrigger.update);
+
+    const updateTicker = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(updateTicker);
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove(updateTicker);
+      lenis.destroy();
+    };
   }, []);
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMobileMenuOpen(false);
+    const section = e.currentTarget.getAttribute("data-href");
+    e.preventDefault();
+    if (section && lenis) {
+      lenis.scrollTo(section, { offset: 0, duration: 1.2 });
+    }
+  };
+
   return (
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          AM
+          AC
         </a>
-        <a
-          href="https://www.linkedin.com/in/akashrmalhotra/"
-          className="navbar-connect"
+
+        {/* Hamburger Menu Icon */}
+        <button
+          className={`hamburger-menu ${mobileMenuOpen ? "active" : ""}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle navigation menu"
           data-cursor="disable"
-          target="_blank"
-          rel="noreferrer"
         >
-          linkedin.com/in/akashrmalhotra
-        </a>
-        <ul>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul className={mobileMenuOpen ? "show" : ""}>
           <li>
-            <a data-href="#about" href="#about">
+            <a data-href="#about" href="#about" onClick={handleLinkClick}>
               <HoverLinks text="ABOUT" />
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
+            <a data-href="#education" href="#education" onClick={handleLinkClick}>
+              <HoverLinks text="EDUCATION" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#techstack" href="#techstack" onClick={handleLinkClick}>
+              <HoverLinks text="TECH STACK" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#work" href="#work" onClick={handleLinkClick}>
               <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
+            <a data-href="#clubs" href="#clubs" onClick={handleLinkClick}>
+              <HoverLinks text="CLUBS" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#code-activity" href="#code-activity" onClick={handleLinkClick}>
+              <HoverLinks text="CODE ACTIVITY" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#contact" href="#contact" onClick={handleLinkClick}>
+              <HoverLinks text="CONNECT" />
             </a>
           </li>
         </ul>

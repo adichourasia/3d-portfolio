@@ -1,0 +1,287 @@
+/* ── Code Activity Section ── */
+.code-activity-section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--backgroundColor);
+  padding: 80px 0;
+}
+
+.code-activity-section h2 {
+  font-size: 70px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+.code-activity-section h2>span {
+  color: var(--accentColor);
+}
+
+.code-activity-container {
+  margin: auto;
+}
+
+/* ── Terminal Grid Layout ── */
+.terminal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  width: 100%;
+}
+
+/* ── Terminal Card ── */
+.terminal-card {
+  background: rgba(13, 13, 17, 0.85);
+  border: 1px solid rgba(255, 199, 3, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 199, 3, 0.03);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.terminal-card:hover {
+  border-color: rgba(255, 199, 3, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 199, 3, 0.06);
+}
+
+/* ── Terminal Header ── */
+.terminal-header {
+  background: rgba(22, 22, 28, 0.95);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-buttons span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn-close {
+  background-color: #ff5f56;
+}
+
+.btn-minimize {
+  background-color: #ffbd2e;
+}
+
+.btn-maximize {
+  background-color: #27c93f;
+}
+
+.terminal-title {
+  margin-left: 20px;
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  font-size: 13px;
+  color: #adacac;
+  letter-spacing: 0.5px;
+}
+
+/* ── Terminal Body ── */
+.terminal-body {
+  padding: 24px;
+  font-family: 'Consolas', 'Monaco', 'Fira Code', 'Courier New', Courier, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #eae5ec;
+  flex: 1;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.terminal-prompt {
+  color: var(--accentColor);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.terminal-cursor {
+  background-color: var(--accentColor);
+  color: var(--accentColor);
+  width: 8px;
+  display: inline-block;
+}
+
+.margin-top {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+/* ── Terminal Stats Profile ── */
+.stats-profile {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.profile-art pre {
+  margin: 0;
+  color: var(--accentColor);
+  font-size: 13px;
+  line-height: 1.25;
+  font-weight: bold;
+  opacity: 0.95;
+  text-shadow: 0 0 8px rgba(255, 199, 3, 0.4);
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-row {
+  display: flex;
+  font-size: 15px;
+}
+
+.detail-row .label {
+  color: #adacac;
+  width: 120px;
+}
+
+.detail-row .value {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.text-highlight {
+  color: var(--accentColor) !important;
+  font-weight: bold !important;
+}
+
+.text-star {
+  color: #ffbd2e !important;
+  font-weight: bold !important;
+}
+
+/* ── Languages Terminal ── */
+.lang-loaders {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.lang-loader-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lang-loader-info {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.lang-status {
+  color: #27c93f;
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+.lang-name {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.lang-dots {
+  color: rgba(255, 255, 255, 0.15);
+  flex: 1;
+  margin: 0 8px;
+  letter-spacing: 2px;
+  overflow: hidden;
+}
+
+.lang-percentage {
+  color: var(--accentColor);
+  font-weight: bold;
+}
+
+.lang-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.lang-progress-fill {
+  height: 100%;
+  width: 0%; /* animated by GSAP */
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(255, 199, 3, 0.6) 0%, var(--accentColor) 100%);
+  box-shadow: 0 0 10px rgba(255, 199, 3, 0.4);
+}
+
+.terminal-info-text {
+  color: #27c93f;
+  opacity: 0.95;
+  font-size: 13px;
+}
+
+/* ── Responsive Code Activity ── */
+@media only screen and (max-width: 1400px) {
+  .code-activity-section h2 {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .terminal-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .stats-profile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .code-activity-section {
+    padding: 50px 0;
+  }
+
+  .code-activity-section h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  .terminal-body {
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .stats-profile {
+    padding: 12px;
+  }
+
+  .lang-loaders {
+    padding: 12px;
+  }
+}

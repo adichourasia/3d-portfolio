@@ -15,7 +15,7 @@
 .skills-section h2 {
   font-size: 70px;
   line-height: 70px;
-  font-weight: 400;
+  font-weight: 700;
   text-align: center;
   color: #ffffff;
   margin-top: 50px;
@@ -25,7 +25,7 @@
 
 .skills-section h2>span {
   font-family: "Geist", sans-serif;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--accentColor);
 }
 

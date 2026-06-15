@@ -206,6 +206,10 @@
   top: inherit;
   z-index: 20; /* Ensure landing content sits above the 3D model canvas (z-index: 11) */
   pointer-events: auto !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .landing-info h3 {
@@ -347,12 +351,15 @@ h2.landing-info-h2 {
 
   .landing-info {
     bottom: auto;
-    top: 51%;
+    top: 50%;
     z-index: inherit;
-    text-align: left;
+    text-align: center;
     transform: translate(0%, -50%);
     right: auto;
-    left: 66%;
+    left: 62%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -366,12 +373,15 @@ h2.landing-info-h2 {
 
   .landing-info {
     bottom: auto;
-    top: 51%;
+    top: 50%;
     z-index: inherit;
-    text-align: left;
+    text-align: center;
     transform: translate(0%, -50%);
     right: auto;
-    left: 70%;
+    left: 66%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -426,37 +436,78 @@ h2.landing-info-h2 {
   transform: translateY(-2px);
 }
 
-.landing-role-text {
-  font-size: 38px;
-  font-weight: 600;
+.role-flip-container {
+  perspective: 1000px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
+}
+
+.role-flip-box {
+  display: inline-block;
+  background: rgba(255, 199, 3, 0.05);
+  border: 1.5px solid rgba(255, 199, 3, 0.35);
+  padding: 10px 24px;
+  border-radius: 50px;
   color: #ffffff;
+  font-weight: 600;
+  font-family: "Geist", sans-serif;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 15px 0 0 0 !important;
-  margin-left: 0px !important;
-  transition: all 0.4s ease-in-out;
-  opacity: 0;
-  transform: translateY(15px);
-  filter: blur(5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 199, 3, 0.1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  animation: flipBox 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  white-space: nowrap;
 }
 
-.landing-role-text.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
+@keyframes flipBox {
+  0% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
 }
 
-.landing-role-text.fade-out {
-  opacity: 0;
-  transform: translateY(-15px);
-  filter: blur(5px);
+@media screen and (min-width: 500px) {
+  .role-flip-box {
+    font-size: 24px;
+    padding: 10px 28px;
+  }
+  .role-flip-container {
+    height: 75px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .role-flip-box {
+    font-size: 28px;
+    padding: 12px 32px;
+  }
+  .role-flip-container {
+    height: 85px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .role-flip-box {
+    font-size: 38px;
+    padding: 15px 40px;
+  }
+  .role-flip-container {
+    height: 100px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .landing-role-text {
-    font-size: 26px;
-    margin-top: 5px;
-  }
   .cgpa-badge {
     font-size: 13px;
     padding: 8px 16px;
@@ -522,23 +573,21 @@ h2.landing-info-h2 {
   }
 
   .landing-info {
-    bottom: 6% !important;
+    bottom: 12% !important;
     top: auto !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
     text-align: center !important;
     transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
   .landing-info h3 {
     font-size: 16px !important;
     letter-spacing: 1.5px !important;
-  }
-
-  .landing-role-text {
-    font-size: 26px !important;
-    margin-top: 8px !important;
   }
 
   .cgpa-badge {

@@ -11,15 +11,10 @@ const roles = [
 
 const Landing = ({ children }: PropsWithChildren) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        setFade(true);
-      }, 400); // match fade transition duration
+      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
     }, 2800);
     return () => clearInterval(interval);
   }, []);
@@ -65,9 +60,11 @@ const Landing = ({ children }: PropsWithChildren) => {
           </div>
           <div className="landing-info">
             <h3>I am a</h3>
-            <h2 className={`landing-role-text ${fade ? "fade-in" : "fade-out"}`}>
-              {roles[currentRoleIndex]}
-            </h2>
+            <div className="role-flip-container">
+              <span key={currentRoleIndex} className="role-flip-box landing-role-text" data-cursor="disable">
+                {roles[currentRoleIndex]}
+              </span>
+            </div>
             <div className="cgpa-badge" data-cursor="disable">
               CGPA: 9.02/10
             </div>

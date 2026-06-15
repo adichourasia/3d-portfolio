@@ -32,7 +32,7 @@ const Education = () => {
         <h2 className="title">
           MY
           <div>
-            E<span className="edu-h2-span">DUCATION</span>
+            <span className="edu-h2-span">EDUCATION</span>
           </div>
         </h2>
       </div>
